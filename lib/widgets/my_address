@@ -1,0 +1,109 @@
+import 'package:flutter/material.dart';
+
+class AddShippingAddress extends StatefulWidget {
+  @override
+  _AddShippingAddressState createState() => _AddShippingAddressState();
+}
+
+class _AddShippingAddressState extends State<AddShippingAddress> {
+  final _formKey = GlobalKey<FormState>();
+  final _nameController = TextEditingController();
+  final _mobileController = TextEditingController();
+  final _addressController = TextEditingController();
+  final _streetController = TextEditingController();
+  final _pincodeController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Add Shipping Address"),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextFormField(
+                controller: _nameController,
+                decoration: InputDecoration(
+                  hintText: "Full Name",
+                ),
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return "Please enter your full name";
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 16.0),
+              TextFormField(
+                controller: _mobileController,
+                decoration: InputDecoration(
+                  hintText: "Mobile Number",
+                ),
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return "Please enter your mobile number";
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 16.0),
+              TextFormField(
+                controller: _addressController,
+                decoration: InputDecoration(
+                  hintText: "Address",
+                ),
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return "Please enter your address";
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 16.0),
+              TextFormField(
+                controller: _streetController,
+                decoration: InputDecoration(
+                  hintText: "Street",
+                ),
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return "Please enter your street";
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 16.0),
+              TextFormField(
+                controller: _pincodeController,
+                decoration: InputDecoration(
+                  hintText: "Pin Code",
+                ),
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return "Please enter your pin code";
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 24.0),
+              ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState.validate()) {
+                    // Save the address and navigate to the next screen
+                    print("Address saved!");
+                  }
+                },
+                child: Text("Confirm Address"),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
